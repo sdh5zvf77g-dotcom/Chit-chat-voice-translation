@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <title>Chit-Chat — Real Conversations. Zero Barriers.</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗣️</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🗣️</span>
+        <span class="logo-text">Chit-Chat</span>
+      </div>
+      <div class="mode-toggle">
+        <button id="onlineBtn" class="mode-btn active" title="Online mode (best quality)">Online</button>
+        <button id="offlineBtn" class="mode-btn" title="Offline mode (privacy / no internet)">Offline</button>
+      </div>
+    </header>
+
+    <!-- Status bar -->
+    <div id="statusBar" class="status-bar">
+      <span id="statusText">Ready — choose languages and tap Speak</span>
+      <span id="latencyBadge" class="badge hidden">~0.6s</span>
+    </div>
+
+    <!-- Language selectors -->
+    <section class="lang-section">
+      <div class="lang-box">
+        <label>You speak</label>
+        <select id="sourceLang" class="lang-select">
+          <option value="en-US">English</option>
+          <option value="es-ES">Spanish</option>
+          <option value="fr-FR">French</option>
+          <option value="de-DE">German</option>
+          <option value="it-IT">Italian</option>
+          <option value="pt-BR">Portuguese</option>
+          <option value="zh-CN">Chinese (Mandarin)</option>
+          <option value="ja-JP">Japanese</option>
+          <option value="ko-KR">Korean</option>
+          <option value="ar-SA">Arabic</option>
+          <option value="hi-IN">Hindi</option>
+          <option value="ru-RU">Russian</option>
+          <option value="th-TH">Thai</option>
+          <option value="vi-VN">Vietnamese</option>
+          <option value="id-ID">Indonesian</option>
+          <option value="tr-TR">Turkish</option>
+        </select>
+      </div>
+
+      <button id="swapBtn" class="swap-btn" title="Swap languages">⇄</button>
+
+      <div class="lang-box">
+        <label>They hear</label>
+        <select id="targetLang" class="lang-select">
+          <option value="es-ES">Spanish</option>
+          <option value="en-US">English</option>
+          <option value="fr-FR">French</option>
+          <option value="de-DE">German</option>
+          <option value="it-IT">Italian</option>
+          <option value="pt-BR">Portuguese</option>
+          <option value="zh-CN">Chinese (Mandarin)</option>
+          <option value="ja-JP">Japanese</option>
+          <option value="ko-KR">Korean</option>
+          <option value="ar-SA">Arabic</option>
+          <option value="hi-IN">Hindi</option>
+          <option value="ru-RU">Russian</option>
+          <option value="th-TH">Thai</option>
+          <option value="vi-VN">Vietnamese</option>
+          <option value="id-ID">Indonesian</option>
+          <option value="tr-TR">Turkish</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Transcripts -->
+    <section class="transcripts">
+      <div class="transcript-card you">
+        <div class="transcript-label">You</div>
+        <div id="sourceText" class="transcript-text">Tap the big button and start talking…</div>
+      </div>
+      <div class="transcript-card them">
+        <div class="transcript-label">Translation</div>
+        <div id="targetText" class="transcript-text">Translation will appear here</div>
+      </div>
+    </section>
+
+    <!-- Main Speak Button -->
+    <div class="speak-area">
+      <button id="speakBtn" class="speak-btn" aria-label="Hold to speak or tap to start continuous">
+        <span class="speak-icon">🎤</span>
+        <span class="speak-label">Hold to Speak</span>
+      </button>
+      <p class="hint">Hold the button while talking • Release to translate & speak</p>
+    </div>
+
+    <!-- Controls -->
+    <section class="controls">
+      <button id="clearBtn" class="ctrl-btn">Clear</button>
+      <button id="historyBtn" class="ctrl-btn">History</button>
+      <button id="settingsBtn" class="ctrl-btn">Settings</button>
+    </section>
+
+    <!-- History panel (hidden by default) -->
+    <div id="historyPanel" class="panel hidden">
+      <div class="panel-header">
+        <h3>Conversation History</h3>
+        <button id="closeHistory" class="close-btn">×</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </div>
+
+    <!-- Settings panel -->
+    <div id="settingsPanel" class="panel hidden">
+      <div class="panel-header">
+        <h3>Settings</h3>
+        <button id="closeSettings" class="close-btn">×</button>
+      </div>
+      <div class="settings-body">
+        <label class="setting-row">
+          <span>Auto-speak translation</span>
+          <input type="checkbox" id="autoSpeak" checked />
+        </label>
+        <label class="setting-row">
+          <span>Continuous listening (experimental)</span>
+          <input type="checkbox" id="continuousMode" />
+        </label>
+        <label class="setting-row">
+          <span>Show latency</span>
+          <input type="checkbox" id="showLatency" checked />
+        </label>
+        <p class="settings-note">
+          <strong>Note:</strong> This prototype uses the browser’s Web Speech API + free translation services.
+          Best experience in Chrome / Edge on desktop or Android. iOS Safari has limited speech recognition support.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Chit-Chat · Talk. HUH? Understood.</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
